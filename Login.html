@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - laddu Swad</title>
+  <link rel="stylesheet" href="style/login.css" />
+</head>
+<body>
+  <div class="login-container">
+    <form class="login-form" onsubmit="sendOTP(event)">
+      <img src="images/laadu.png" alt="Laadu Swad Logo" class="logo"/>
+      <h2>Log in</h2>
+      <p>Enter your email and we'll send you a login code</p>
+      <input type="email" id="email" placeholder="Email" required />
+      <button type="submit">Continue</button>
+      <a href="#" class="privacy-link">Privacy</a>
+    </form>
+
+    <!-- OTP Form -->
+    <form class="login-form" id="otp-form" onsubmit="verifyOTP(event)" style="display:none;">
+      <h2>Enter OTP</h2>
+      <input type="text" id="otp" placeholder="Enter OTP" required />
+      <button type="submit">Verify OTP</button>
+    </form>
+  </div>
+
+  <script>
+    function sendOTP(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value;
+
+      fetch('http://localhost:3000/send-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert('OTP sent to your email.');
+          document.querySelector('.login-form').style.display = 'none';
+          document.getElementById('otp-form').style.display = 'block';
+        } else {
+          alert('Failed to send OTP. Please try again.');
+        }
+      });
+    }
+
+    function verifyOTP(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value;
+      const otp = document.getElementById('otp').value;
+
+      fetch('http://localhost:3000/verify-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, otp })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.verified) {
+          alert('Login successful!');
+          window.location.href = 'index.html'; // or your dashboard page
+        } else {
+          alert('Invalid OTP. Please try again.');
+        }
+      });
+    }
+  </script>
+  <script src="server.js"></script>
+</body>
+</html>

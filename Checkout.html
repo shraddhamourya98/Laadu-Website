@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout - Laddu Swad</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #000;
+      color: #fff;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 2rem;
+    }
+    .left, .right {
+      flex: 1;
+      min-width: 300px;
+      padding: 1rem;
+    }
+    input, select, textarea, button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #333;
+      background: #111;
+      color: white;
+    }
+    .section {
+      margin-bottom: 1.5rem;
+    }
+    .section h3 {
+      margin-bottom: 0.5rem;
+    }
+    .order-summary {
+      background: #111;
+      padding: 1rem;
+      border-radius: 6px;
+    }
+    .product-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .total {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .pay-button {
+      background: #1c78c0;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    .logo {
+      display: block;
+      margin: 0 auto 1rem;
+      height: 40px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <img class="logo" src="./images/logo.png" alt="Shuddh Swad" />
+
+      <div class="section">
+        <h3>Contact</h3>
+        <input type="text" placeholder="Email or mobile number" />
+        <label><input type="checkbox" checked /> Email me with news and offers</label>
+      </div>
+
+      <div class="section">
+        <h3>Delivery</h3>
+        <select>
+          <option>India</option>
+        </select>
+        <input type="text" placeholder="First name" />
+        <input type="text" placeholder="Last name" />
+        <input type="text" placeholder="Address" />
+        <input type="text" placeholder="Apartment, suite, etc. (optional)" />
+        <input type="text" placeholder="City" />
+        <select>
+          <option>Maharashtra</option>
+        </select>
+        <input type="text" placeholder="PIN code" />
+        <input type="text" placeholder="Phone" />
+        <label><input type="checkbox" /> Save this info</label>
+        <label><input type="checkbox" /> Text me with offers</label>
+      </div>
+
+      <div class="section">
+        <h3>Shipping method</h3>
+        <button disabled>Enter address to see shipping methods</button>
+      </div>
+
+      <div class="section">
+        <h3>Payment</h3>
+        <p>All transactions are secure and encrypted.</p>
+        <div style="background: #222; padding: 1rem; border-radius: 6px;">
+          <p>PhonePe / UPI / NetBanking / Cards</p>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa" height="20" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard" height="20" />
+          <!-- Add more icons as needed -->
+          <p style="margin-top: 1rem;">After clicking "Pay now", you’ll be redirected to PhonePe to complete your purchase securely.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Billing address</h3>
+        <label><input type="radio" name="billing" checked /> Same as shipping</label>
+        <label><input type="radio" name="billing" /> Use a different billing address</label>
+        <button class="pay-button">Pay now</button>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="order-summary">
+        <h3>Order summary</h3>
+        <div class="product-item">
+          <span>Jaggery Thekua</span>
+          <span>₹299.00</span>
+        </div>
+        <div class="product-item">
+          <span>Traditional Thekua 3 Combo</span>
+          <span>₹798.00</span>
+        </div>
+        <div class="product-item">
+          <span>Traditional Thekua</span>
+          <span>₹1196.00</span>
+        </div>
+        <div class="product-item">
+          <span>Jaggery Thekua 3 Combo</span>
+          <span>₹1199.00</span>
+        </div>
+        <div class="total">
+          Total: ₹3,892.00
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
